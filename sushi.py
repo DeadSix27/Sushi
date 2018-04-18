@@ -728,6 +728,7 @@ def run(args):
 		for event in events:
 			event.apply_shift()
 
+		logging.info('Saving sub to {0}'.format(dst_script_path))
 		script.save_to_file(dst_script_path)
 
 		if write_plot:
