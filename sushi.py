@@ -442,14 +442,8 @@ def calculate_shifts(src_stream, dst_stream, groups_list, normal_window, max_win
 					window = normal_window
 				idx += 1
 				continue
-		# print("gothere1")
-		# print(tv_audio)
-		# print(type(tv_audio))
-		# math.floor(len(tv_audio[0])/2))
-		left_audio_half, right_audio_half = np.split(tv_audio, [math.floor(len(tv_audio[0])/2)], axis=1)
+		left_audio_half, right_audio_half = np.split(tv_audio, [math.ceil(len(tv_audio[0])/2)], axis=1)
 		right_half_offset = len(left_audio_half[0]) / float(src_stream.sample_rate)
-		# print("gothere2")
-		# exit(1)
 		terminate = False
 		# searching from last committed shift
 		if original_time + last_committed_shift < dst_stream.duration_seconds:
